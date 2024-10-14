@@ -23,13 +23,13 @@ sudo docker images
 ```
 Salida:
 
-REPOSITORY    TAG       IMAGE ID       CREATED         SIZE
+REPOSITORY    | TAG       | IMAGE ID       | CREATED        | SIZE
 
-ubuntu        latest    61b2756d6fa9   3 weeks ago     78.1MB
+ubuntu        | latest    | 61b2756d6fa9   | 3 weeks ago     | 78.1MB
 
-**alpine        latest    91ef0af61f39   4 weeks ago     7.8MB**
+**alpine       | latest    | 91ef0af61f39   | 4 weeks ago     | 7.8MB**
 
-hello-world   latest    d2c94e258dcb   17 months ago   13.3kB
+hello-world   | latest    | d2c94e258dcb   | 17 months ago  | 13.3kB
 
 # 2. Crea un contenedor sin ponerle nombre. ¿está arrancado? Obtén el nombre
 
@@ -40,25 +40,96 @@ sudo docker run alpine
 ```
 Sin salida
 
-
-
-Para saber si esta arrancado y obtener el nambre se utiliza el siguiente comando en la salida seve que no esta arrancado:
+Para saber si esta arrancado y obtener el nombre se utiliza el siguiente comando en la salida se ve que no esta arrancado:
 ```bash
 sudo docker ps -a
 ```
 Salida:
 
-CONTAINER ID   IMAGE         COMMAND     CREATED             STATUS                         PORTS     NAMES
+CONTAINER ID   | IMAGE         | COMMAND     | CREATED         | STATUS                         | PORTS     | NAMES
 
-**48cf4f815984   alpine        "/bin/sh"   33 seconds ago      Exited (0) 33 seconds ago                dreamy_jemison**
+**48cf4f815984   | alpine   | "/bin/sh"   | 33 seconds ago    | Exited (0) 33 seconds ago | |              dreamy_jemison**
 
-2fe19b0b420d   ubuntu        "bash"      33 minutes ago      Exited (0) 32 minutes ago                busy_hodgkin
+2fe19b0b420d   | ubuntu        | "bash"      | 33 minutes ago      | Exited (0) 32 minutes ago | |                busy_hodgkin
 
-6d4c969701ca   ubuntu        "bash"      About an hour ago   Exited (0) About an hour ago             cranky_noyce
+6d4c969701ca   | ubuntu        | "bash"      | About an hour ago   | Exited (0) About an hour ago | |            cranky_noyce
 
-000663703dc3   hello-world   "/hello"    About an hour ago   Exited (0) About an hour ago             eager_shaw
+000663703dc3   | hello-world   | "/hello"    | About an hour ago   | Exited (0) About an hour ago | |         eager_shaw
 
-ca9f975d9c31   hello-world   "/hello"    About an hour ago   Exited (0) About an hour ago             thirsty_saha
+ca9f975d9c31   | hello-world   | "/hello"    | About an hour ago   | Exited (0) About an hour ago | |             thirsty_saha
+
+# 3. Crea un contenedor con el nombre 'dam_alp1'. ¿Como puedes acceder a él?
+
+Para crear un contenedor con un nombre concreto en este caso dam_alp1 se haria de esta manera:
+```bash
+sudo docker run --name dam_alp1 -it alpine
+```
+Sin salida
+
+Comprobación
+```bash
+sudo docker ps -a
+```
+Salida:
+CONTAINER ID   | IMAGE         | COMMAND     | CREATED         | STATUS                         | PORTS     | NAMES
+
+**46c0491ee9c3   | alpine   | "/bin/sh"   | 8 minutes ago    | Exited (0) 7 minutes ago  | |              dam_alp1**
+
+Para acceder a el se usaria el siguiente comando:
+```bash
+sudo docker exec -it dam_alp1 sh
+```
+Sin salida
+
+# 4. Comprueba que ip tiene y si puedes hacer un ping a google.com
+
+Para obtener la ip del contenedor se consigue mediante este comando:
+```bash
+sudo docker inspect dam_alp1 |grep IPA
+```
+Salida:
+
+"SecondaryIPAddresses": null,
+	    
+"IPAddress": "172.17.0.2",
+	    
+"IPAMConfig": null,
+
+"IPAddress": "172.17.0.2",
+
+Para hacer un ping a google desde el contenedor primero tienes que entrar al mismo con el comando anterior y una vez dentro usar el siguiente comando:
+```bash
+ping -c 2 google.com
+```
+Salida:
+
+PING google.com (142.250.200.110): 56 data bytes
+
+64 bytes from 142.250.200.110: seq=0 ttl=61 time=16.128 ms
+
+64 bytes from 142.250.200.110: seq=1 ttl=61 time=16.986 ms
+
+--- google.com ping statistics ---
+
+2 packets transmitted, 2 packets received, 0% packet loss
+
+round-trip min/avg/max = 16.128/16.557/16.986 ms
+
+# 5. Crea un contenedor con el nombre 'dam_alp2'. ¿Puedes hacer ping entre los contenedores?
+
+sudo docker run --name dam_alp2 -it alpine
+/ # ping -c 2 172.17.0.2
+PING 172.17.0.2 (172.17.0.2): 56 data bytes
+64 bytes from 172.17.0.2: seq=0 ttl=64 time=0.202 ms
+64 bytes from 172.17.0.2: seq=1 ttl=64 time=0.258 ms
+
+--- 172.17.0.2 ping statistics ---
+2 packets transmitted, 2 packets received, 0% packet loss
+round-trip min/avg/max = 0.202/0.230/0.258 ms
+
+
+
+		    
 
 
 
