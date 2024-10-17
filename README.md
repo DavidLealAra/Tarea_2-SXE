@@ -52,6 +52,29 @@ Salida:
 |000663703dc3   | hello-world   | "/hello"    | About an hour ago   | Exited (0) About an hour ago | 		|eager_shaw|
 |ca9f975d9c31   | hello-world   | "/hello"    | About an hour ago   | Exited (0) About an hour ago | 		|thirsty_saha|
 
+# 3. Crea un contenedor con el nombre 'dam_alp1'. ¿Como puedes acceder a él?
+
+Para crear un contenedor con un nombre concreto en este caso dam_alp1 se haria de esta manera:
+```bash
+sudo docker run --name dam_alp1 -it alpine
+```
+Sin salida
+
+Comprobación
+```bash
+sudo docker ps -a
+```
+Salida:
+CONTAINER ID   | IMAGE         | COMMAND     | CREATED         | STATUS                      | PORTS     | NAMES
+|     :---:	|     :---: 	|     :---:   |    :---:         |:---:	                     |     :---:	|     :---: 	|
+|**46c0491ee9c3**   | **alpine**   | **"/bin/sh"**   | **8 minutes ago **   | **Exited (0) 7 minutes ago**  |                     | **dam_alp1**  |
+
+Para acceder a el se usaria el siguiente comando:
+```bash
+sudo docker exec -it dam_alp1 sh
+```
+Sin salida
+
 
 
 
