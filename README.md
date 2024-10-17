@@ -117,6 +117,8 @@ PING 172.17.0.2 (172.17.0.2): 56 data bytes
 2 packets transmitted, 2 packets received, 0% packet loss
 round-trip min/avg/max = 0.202/0.230/0.258 ms
 
+## 6. Sal del terminal, ¿que ocurrió con el contenedor?
+Siguen iniciados aunque salgan de la terminal.
 
 
 
