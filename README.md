@@ -118,8 +118,23 @@ PING 172.17.0.2 (172.17.0.2): 56 data bytes
 round-trip min/avg/max = 0.202/0.230/0.258 ms
 
 ## 6. Sal del terminal, ¿que ocurrió con el contenedor?
+
 Siguen iniciados aunque salgan de la terminal.
 
+## 7. ¿Cuanta memoria en el disco duro ocupaste?
+
+Con el siguiente comando puedes saber cuanta memoria ocupé en el disco.
+```bash
+sudo docker system df
+```
+Salida:
+
+|TYPE       |  TOTAL |  ACTIVE | SIZE |     RECLAIMABLE |
+|     :---:|  :---: |  :---:  |:---:|:---:	       |
+|Images          |3         |3         |85.92MB   |0B (0%)|
+|Containers      |7         |2         |83B       |31B (37%)|
+|Local Volumes   |0         |0         |0B        |0B|
+|Build Cache     |0         |0         |0B        |0B|
 
 
 		    
