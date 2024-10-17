@@ -94,12 +94,29 @@ Para hacer un ping a google desde el contenedor primero tienes que entrar al mis
 ping -c 2 google.com
 ```
 Salida:
+
 PING google.com (142.250.200.110): 56 data bytes
 64 bytes from 142.250.200.110: seq=0 ttl=61 time=16.128 ms
 64 bytes from 142.250.200.110: seq=1 ttl=61 time=16.986 ms
 --- google.com ping statistics ---
 2 packets transmitted, 2 packets received, 0% packet loss
 round-trip min/avg/max = 16.128/16.557/16.986 ms
+
+# 5. Crea un contenedor con el nombre 'dam_alp2'. ¿Puedes hacer ping entre los contenedores?
+
+Para hacer un ping entre dos contenedores se hace con el siguiente comando:
+```bash
+sudo docker run --name dam_alp2 -it alpine
+```
+Salida:
+
+/ # ping -c 2 172.17.0.2
+PING 172.17.0.2 (172.17.0.2): 56 data bytes
+64 bytes from 172.17.0.2: seq=0 ttl=64 time=0.202 ms
+@@ -127,6 +127,39 @@ PING 172.17.0.2 (172.17.0.2): 56 data bytes
+2 packets transmitted, 2 packets received, 0% packet loss
+round-trip min/avg/max = 0.202/0.230/0.258 ms
+
 
 
 
