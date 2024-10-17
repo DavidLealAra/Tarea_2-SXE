@@ -136,7 +136,18 @@ Salida:
 |Local Volumes   |0         |0         |0B        |0B|
 |Build Cache     |0         |0         |0B        |0B|
 
+## 8. ¿Cuanta RAM ocupan los contenedores? ¿Hay algún comando docker para saber esto?
 
+Con este comando se pude saber la ram utilizada por los contenedores:
+```bash
+sudo docker stats
+```
+Salida:
+
+| CONTAINER ID  | NAME 		|     CPU %         | **MEM USAGE / LIMIT**   	| **MEM %**     	| NET I/O       	| BLOCK I/O     	| PIDS				|
+|     :---:	|     :---: 	|     :---:  	    |:---:			|:---:			|:---:			|:---:			|:---:			|
+| 4778d7912c10  | dam_alp2      |	0.00%       | **472KiB / 7.883GiB**  	| **0.01%**     	| 3.56kB / 0B   	| 8.19kB / 0B   	| 1				|
+| 46c0491ee9c3  | dam_alp1     |	 0.00%      | **588KiB / 7.883GiB**  	| **0.01%**     	| 7.66kB / 0B   	| 1.33MB / 0B   	| 1				|
 		    
 
 
