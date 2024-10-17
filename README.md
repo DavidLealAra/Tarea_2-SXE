@@ -75,7 +75,31 @@ sudo docker exec -it dam_alp1 sh
 ```
 Sin salida
 
+# 4. Comprueba que ip tiene y si puedes hacer un ping a google.com
 
+Para obtener la ip del contenedor se consigue mediante este comando:
+```bash
+sudo docker inspect dam_alp1 |grep IPA
+```
+Salida:
+
+"SecondaryIPAddresses": null,
+	    
+"IPAddress": "172.17.0.2",
+	    
+"IPAMConfig": null,
+"IPAddress": "172.17.0.2",
+Para hacer un ping a google desde el contenedor primero tienes que entrar al mismo con el comando anterior y una vez dentro usar el siguiente comando:
+```bash
+ping -c 2 google.com
+```
+Salida:
+PING google.com (142.250.200.110): 56 data bytes
+64 bytes from 142.250.200.110: seq=0 ttl=61 time=16.128 ms
+64 bytes from 142.250.200.110: seq=1 ttl=61 time=16.986 ms
+--- google.com ping statistics ---
+2 packets transmitted, 2 packets received, 0% packet loss
+round-trip min/avg/max = 16.128/16.557/16.986 ms
 
 
 
